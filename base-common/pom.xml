@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.Newcity.base</groupId>
+    <artifactId>base-common</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>base-medules</module>
+    </modules>
+
+    <properties>
+        <libs-name>com.Newcity.libs</libs-name>
+        <libs-verstion>1.0-SNAPSHOT</libs-verstion>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>4.2.5.RELEASE</version>
+            </dependency>
+
+            <!--libs-->
+            <dependency>
+                <groupId>${libs-name}</groupId>
+                <artifactId>libs-utils</artifactId>
+                <version>${libs-verstion}</version>
+            </dependency>
+            <dependency>
+                <groupId>${libs-name}</groupId>
+                <artifactId>logger-interface</artifactId>
+                <version>${libs-verstion}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

@@ -1,0 +1,4 @@
+com\Newcity\base\entity\BaseEntity.class
+com\Newcity\base\controller\BaseController.class
+com\Newcity\base\dao\BaseDao.class
+com\Newcity\base\service\BaseService.class
