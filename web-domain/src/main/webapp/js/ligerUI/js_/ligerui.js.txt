@@ -1,0 +1,61 @@
+// ligerui.all.js    9554 line 废弃
+            gridhtmlarr.push("                    <div class='l-bar-button l-bar-btnfirst' onclick='page(\'first\')'><span></span></div>");
+			
+// ligerui.all.js	 9555 line 废弃
+            gridhtmlarr.push("                    <div class='l-bar-button l-bar-btnprev'  onclick='page(\'prev\')'><span></span></div>");
+			
+			
+// ligerui.all.js	 9561 line 废弃
+            gridhtmlarr.push("                    <div class='l-bar-button l-bar-btnnext' onclick='page(\'next\')'><span></span></div>");
+            gridhtmlarr.push("                    <div class='l-bar-button l-bar-btnlast' onclick='page(\'last\')'><span></span></div>");						
+			
+			
+// ligerui.all.js 	 9566 line   
+            gridhtmlarr.push("                     <div class='l-bar-button l-bar-btnload' onclick='query();'><span></span></div>");			
+			
+// ligerGrid.js			
+			gridhtmlarr.push("                     <div class='l-bar-button l-bar-btnload' onclick='query();'><span ></span></div>");			
+			
+
+			
+// ligerui.all.js	 
+# 9283 line 
+			pageStatMessage: '总计 {total} 条 , 每页显示：{pagesize} 条',
+			
+			
+# 13038 line   修改	_buildPager: function ()
+			  
+			  
+			  #增加 total 回滚
+			  if(this.ext_total){
+				p.total = this.ext_total;
+			  } 
+	
+			  #修改 input 显示
+			  $('.pcontrol input', g.toolbar).val(p.page);
+              if (!p.pageCount) p.pageCount = 1;
+              $('.pcontrol span', g.toolbar).html(p.pageCount);	
+			  
+			  改为>>>
+			var pn = $("#maingrid").attr("pn");
+			if( pn &&  pn.split("/")[1]){  
+				$('.pcontrol input', g.toolbar).val( pn.split("/")[1] ); 
+			}else{
+				$('.pcontrol input', g.toolbar).val(p.page);
+			}
+			
+            if (!p.pageCount) p.pageCount = 1;
+            $('.pcontrol span', g.toolbar).html(this.ext_pageCount);
+			  
+			  
+			   
+			 
+# 10927 line  增加  		
+				 	 		
+			 changePage: function (ctype)	
+					openpage(ctype);		
+					if(true) return;
+						
+// ligerGrid.js 	 3915 line
+			增加 ：  													
+						
