@@ -1,0 +1,8 @@
+com\Newcity\module\customer\dao\CustomerVipMapper.class
+com\Newcity\module\customer\dao\CustomerOrderMapper.class
+com\Newcity\module\customer\dao\CustomerAdminMapper.class
+com\Newcity\module\customer\dao\CustomerHouseMapper.class
+com\Newcity\module\customer\entity\CustomerHouse.class
+com\Newcity\module\customer\entity\CustomerAdmin.class
+com\Newcity\module\customer\entity\CustomerVip.class
+com\Newcity\module\customer\entity\CustomerOrder.class

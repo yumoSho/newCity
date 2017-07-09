@@ -1,0 +1,4 @@
+com\Newcity\module\house\dao\HouseAdminMapper.class
+com\Newcity\module\house\entity\HouseAdmin.class
+com\Newcity\module\house\dao\HouseModuleMapper.class
+com\Newcity\module\house\entity\HouseModule.class

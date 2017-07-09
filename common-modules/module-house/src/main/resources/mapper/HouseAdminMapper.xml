@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Newcity.module.house.dao.HouseAdminMapper">
+  <resultMap id="BaseResultMap" type="com.Newcity.module.house.entity.HouseAdmin">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="module_id" jdbcType="BIGINT" property="moduleId" />
+    <result column="house_area" jdbcType="DOUBLE" property="houseArea" />
+    <result column="building_no" jdbcType="INTEGER" property="buildingNo" />
+    <result column="unit_no" jdbcType="INTEGER" property="unitNo" />
+    <result column="house_no" jdbcType="INTEGER" property="houseNo" />
+    <result column="floor_high" jdbcType="INTEGER" property="floorHigh" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="modification_time" jdbcType="TIMESTAMP" property="modificationTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, module_id, house_area, building_no, unit_no, house_no, floor_high, create_time, 
+    operator, is_delete, modification_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from house_admin
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from house_admin
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.Newcity.module.house.entity.HouseAdmin">
+    insert into house_admin (id, module_id, house_area, 
+      building_no, unit_no, house_no, 
+      floor_high, create_time, operator, 
+      is_delete, modification_time)
+    values (#{id,jdbcType=BIGINT}, #{moduleId,jdbcType=BIGINT}, #{houseArea,jdbcType=DOUBLE}, 
+      #{buildingNo,jdbcType=INTEGER}, #{unitNo,jdbcType=INTEGER}, #{houseNo,jdbcType=INTEGER}, 
+      #{floorHigh,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=BIT}, #{modificationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.Newcity.module.house.entity.HouseAdmin">
+    insert into house_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="moduleId != null">
+        module_id,
+      </if>
+      <if test="houseArea != null">
+        house_area,
+      </if>
+      <if test="buildingNo != null">
+        building_no,
+      </if>
+      <if test="unitNo != null">
+        unit_no,
+      </if>
+      <if test="houseNo != null">
+        house_no,
+      </if>
+      <if test="floorHigh != null">
+        floor_high,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="modificationTime != null">
+        modification_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="moduleId != null">
+        #{moduleId,jdbcType=BIGINT},
+      </if>
+      <if test="houseArea != null">
+        #{houseArea,jdbcType=DOUBLE},
+      </if>
+      <if test="buildingNo != null">
+        #{buildingNo,jdbcType=INTEGER},
+      </if>
+      <if test="unitNo != null">
+        #{unitNo,jdbcType=INTEGER},
+      </if>
+      <if test="houseNo != null">
+        #{houseNo,jdbcType=INTEGER},
+      </if>
+      <if test="floorHigh != null">
+        #{floorHigh,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null">
+        #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.Newcity.module.house.entity.HouseAdmin">
+    update house_admin
+    <set>
+      <if test="moduleId != null">
+        module_id = #{moduleId,jdbcType=BIGINT},
+      </if>
+      <if test="houseArea != null">
+        house_area = #{houseArea,jdbcType=DOUBLE},
+      </if>
+      <if test="buildingNo != null">
+        building_no = #{buildingNo,jdbcType=INTEGER},
+      </if>
+      <if test="unitNo != null">
+        unit_no = #{unitNo,jdbcType=INTEGER},
+      </if>
+      <if test="houseNo != null">
+        house_no = #{houseNo,jdbcType=INTEGER},
+      </if>
+      <if test="floorHigh != null">
+        floor_high = #{floorHigh,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null">
+        modification_time = #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.Newcity.module.house.entity.HouseAdmin">
+    update house_admin
+    set module_id = #{moduleId,jdbcType=BIGINT},
+      house_area = #{houseArea,jdbcType=DOUBLE},
+      building_no = #{buildingNo,jdbcType=INTEGER},
+      unit_no = #{unitNo,jdbcType=INTEGER},
+      house_no = #{houseNo,jdbcType=INTEGER},
+      floor_high = #{floorHigh,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=BIT},
+      modification_time = #{modificationTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,6 @@
+com\Newcity\module\business\dao\SysUserMarketMapper.class
+com\Newcity\module\business\entity\SysUserFinance.class
+com\Newcity\module\business\service\SysUserService.class
+com\Newcity\module\business\entity\SysUserMarket.class
+com\Newcity\module\business\dao\SysUserFinanceMapper.class
+com\Newcity\module\business\entity\enumeration\SysUserType.class

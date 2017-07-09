@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.Newciyt.common</groupId>
+    <artifactId>common-modules</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>module-customer</module>
+        <module>module-business</module>
+        <module>module-house</module>
+    </modules>
+
+    <properties>
+        <libs-name>com.Newcity.libs</libs-name>
+        <libs-verstion>1.0-SNAPSHOT</libs-verstion>
+        <spring.version>4.2.5.RELEASE</spring.version>
+        <jdk-version>1.8</jdk-version>
+        <compiler-encoding>utf8</compiler-encoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--libs-->
+            <dependency>
+                <groupId>${libs-name}</groupId>
+                <artifactId>libs-utils</artifactId>
+                <version>${libs-verstion}</version>
+            </dependency>
+            <dependency>
+                <groupId>${libs-name}</groupId>
+                <artifactId>sql-interface</artifactId>
+                <version>${libs-verstion}</version>
+            </dependency>
+            <dependency>
+                <groupId>${libs-name}</groupId>
+                <artifactId>redis-interface</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>${libs-name}</groupId>
+                <artifactId>logger-interface</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>${libs-name}</groupId>
+                <artifactId>common-do</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.Newcity.base</groupId>
+                <artifactId>base-medules</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>1.5.0-b01</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <version>3.5.1</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${jdk-version}</source>
+                    <target>${jdk-version}</target>
+                    <encoding>${compiler-encoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
