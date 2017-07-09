@@ -1,0 +1,9 @@
+com\Newcity\lib\utils\DateUtils.class
+com\Newcity\lib\utils\PropertiesUtils.class
+com\Newcity\lib\utils\MD5Utils.class
+com\Newcity\lib\utils\FormatUtils.class
+com\Newcity\lib\utils\StrUtil.class
+com\Newcity\lib\utils\CommonUtils.class
+com\Newcity\lib\utils\SpringContextUtil.class
+com\Newcity\lib\utils\IpAddressUtils.class
+com\Newcity\lib\utils\XMLUtils.class

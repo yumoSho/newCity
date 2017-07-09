@@ -1,0 +1,8 @@
+com\Newcity\libs\mybatis\extend\MySql5Dialect.class
+com\Newcity\libs\mybatis\extend\PaginationInterceptor.class
+com\Newcity\libs\mybatis\extend\Dialect$Type.class
+com\Newcity\libs\mybatis\extend\Dialect.class
+com\Newcity\libs\mybatis\extend\MySql5PageHepler.class
+com\Newcity\libs\mybatis\SimpleDaoSpringImpl.class
+com\Newcity\libs\mybatis\SimpleDaoImpl.class
+com\Newcity\libs\mybatis\extend\PaginationInterceptor$1.class
