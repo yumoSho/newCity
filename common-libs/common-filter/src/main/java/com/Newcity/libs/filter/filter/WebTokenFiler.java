@@ -1,5 +1,6 @@
 package com.Newcity.libs.filter.filter;
 
+import com.Newcity.libs.dmo.constant.Constant;
 import com.Newcity.libs.dmo.constant.ResultCode;
 import com.Newcity.libs.dmo.constant.TokenConstant;
 import com.Newcity.libs.dmo.vo.JsonResult;
@@ -38,52 +39,34 @@ public class WebTokenFiler implements Filter {
         //登录请求
         allowURI.add("/login/login");
         //静态页面
+        allowURI.add("/login.html");
         allowURI.add("/css");
         allowURI.add("/js");
-        allowURI.add("/admin/login.html");
         logger.info("loading WebTokenFilter end !");
     }
 
     public void doFilter(ServletRequest request,ServletResponse response,FilterChain chain) throws ServletException, IOException {
         logger.info("doFilter WebTokenFilter ...");
-        HttpServletRequest httpRequest = (HttpServletRequest)request;
+         HttpServletRequest httpRequest = (HttpServletRequest)request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         if(webToken == null){
             webToken = WebApplicationContextUtils.getWebApplicationContext(filterConfig.getServletContext()).getBean(WebToken.class);
         }
 
         httpResponse.setHeader("Access-Control-Allow-Origin",httpRequest.getHeader("Origin"));
-        httpResponse.setHeader("Access-Control-Allow-Methods","POST,GET,OPTIONS");
-        httpResponse.setHeader("Access-Control-Allow-Headers","Content-Type,Set-Cookie,token");
+         httpResponse.setHeader("Access-Control-Allow-Methods","POST,GET,OPTIONS");
+         httpResponse.setHeader("Access-Control-Allow-Headers","Content-Type,Set-Cookie,token");
         httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
-        httpResponse.setHeader("Access-Control-Max-Age", "60");
+          httpResponse.setHeader("Access-Control-Max-Age", "60");
         httpResponse.setHeader("Access-Control-Expose-Headers","Content-Type,Set-Cookie,Uf-Session-Id,token");
 
-        if("OPTIONS".equals(httpRequest.getMethod())){
+         if("OPTIONS".equals(httpRequest.getMethod())){
             return;
         }
 
-
-        String uri = httpRequest.getRequestURI();
-
-        //静态资源
-        String stateUri[] = uri.split("/");
-        if(stateUri.length > 2 && allowURI.contains("/"+stateUri[2])){
-            chain.doFilter(request,response);
-            return;
-        }
-        //过滤请求
-        String validateUri = uri.substring(uri.indexOf("/", 1), uri.length());
-        if(allowURI.contains(validateUri)){
-            chain.doFilter(request,response);
-            return;
-        }
         JsonResult jsonResult = new JsonResult();
-//        String token = httpRequest.getHeader(TokenConstant.TOKEN);
         String token = TokenUtils.getValueInRequest(httpRequest,"token");
 
-        /*chain.doFilter(request,response);
-        return;*/
         if(token != null && !"".equals(token.trim())){
             //token是否存在
             if(webToken.isExist(token)){
@@ -114,12 +97,28 @@ public class WebTokenFiler implements Filter {
                 write(response,jsonResult);
                 return;
             }
-        }else{
+        }
+        /*else{
             logger.info(" token is null");
             jsonResult.setup(ResultCode.INVALID_TOKEN,"token is null");
             write(response,jsonResult);
             return;
+        }*/
+
+        String uri = httpRequest.getRequestURI();
+        //过滤请求
+        for(String url : allowURI){
+            if(uri.contains(url)){
+                chain.doFilter(request,response);
+                return;
+            }
         }
+
+        logger.info(" token is null");
+        httpResponse.sendRedirect("/web-domain/admin/login.html");
+        jsonResult.setup(ResultCode.INVALID_TOKEN,"token is null");
+        write(response,jsonResult);
+        return;
     }
 
     public void write(ServletResponse response,JsonResult jsonResult) throws IOException{

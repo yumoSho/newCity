@@ -58,7 +58,7 @@ public class WebTokenImpl implements WebToken {
 
         try{
             //清空用户用户token
-            String accountNoStr = TokenUtils.buildAccountKey(accountIp+"-"+accountNo);
+            String accountNoStr = TokenUtils.buildAccountKey(accountNo);
             String tokenStr = TokenUtils.buildTokenKey(token);
             String tokenOld = redis.get(accountNoStr);
             if(tokenOld !=  null){
@@ -66,10 +66,10 @@ public class WebTokenImpl implements WebToken {
                 redis.del(tokenOld);
             }
 
-            redis.set(accountNoStr,tokenStr);
+            redis.set(accountNoStr,token);
             redis.hset(tokenStr,mapParams,LoginToken);
             //设置cookie返回给客户端
-            response.addCookie(TokenUtils.newCookie("token",tokenStr,LoginToken));
+            TokenUtils.newCookie("token",token,LoginToken,response);
             Map<String,Object> mapResult = new HashMap<String,Object>();
             mapResult.put("token",token);
             mapResult.put("LoginToken",LoginToken);
@@ -96,8 +96,8 @@ public class WebTokenImpl implements WebToken {
         if(StringUtils.isEmpty(tokenKey)){
             return false;
         }
-        String state = redis.hget(tokenKey,TokenConstant.KEY_TOKEN_ROLE);
-        return StringUtils.isEmpty(state) && state.equals(TokenConstant.TOKEN_STATE_LOGIN);
+        String state = redis.hget(tokenKey,TokenConstant.KEY_TOKEN_TYPE);
+        return !(StringUtils.isEmpty(state));
     }
 
     @Override

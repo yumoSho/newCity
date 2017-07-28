@@ -4,6 +4,7 @@ import com.Newcity.lib.utils.StrUtil;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -57,9 +58,10 @@ public class TokenUtils {
         return value;
     }
 
-    public static Cookie newCookie(String name,String value,Integer expire){
+    public static void newCookie(String name, String value, Integer expire, HttpServletResponse response){
         Cookie cookie = new Cookie(name,value);
+        cookie.setPath("/");
         cookie.setMaxAge(expire);
-        return cookie;
+        response.addCookie(cookie);
     }
 }

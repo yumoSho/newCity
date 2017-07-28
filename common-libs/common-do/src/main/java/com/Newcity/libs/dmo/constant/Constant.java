@@ -53,7 +53,7 @@ public class Constant {
     public static final Integer USER_DEPARTURE = 2;//离职
 
 
-
+    public static final String LOGINURL = "admin/login.html"; //用户登陆页面
 
 
 }
