@@ -7,12 +7,8 @@ $(function()
         $(this).val($(this).attr('placeholder'));
         $(this).addClass('placeholder');
     }
-
-
-
     // remove placeholders on submit
-    $('[placeholder]').closest('form').submit(function()
-    {
+    $('[placeholder]').closest('form').submit(function(){
 
     });
     // check placeholder browser support
@@ -27,7 +23,6 @@ function adminLogin(){
         password:password
     }
     $.ajax({
-
         type : "POST",
         contentType : 'application/json',
         url : path + "/login/login",
@@ -40,13 +35,12 @@ function adminLogin(){
             if(data.result != 0){
                 alert(data.message);
             }else {
-                window.location.href= path + "/admin/index.jsp";
+                window.location.href= path + "/index/initialize";
             }
 
         },
         error : function(e) {
-            debugger;
-            //alert("err");
+            console.log(e);
         }
     });
 }

@@ -158,6 +158,11 @@
       <version>8.1.0.RC2</version>
     </dependency>
     <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jsp-2.1</artifactId>
+      <version>6.0.0</version>
+    </dependency>
+    <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
       <version>1.2.6</version>
@@ -265,8 +270,8 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <version>3.5.1</version>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
         <configuration>
           <source>${jdk-version}</source>
           <target>${jdk-version}</target>
@@ -285,11 +290,10 @@
           </connectors>
           <scanIntervalSeconds>10</scanIntervalSeconds>
           <webAppConfig>
-            <defaultsDescriptor>src/test/resources/webdefault.xml</defaultsDescriptor>
+            <defaultsDescriptor>src/main/resources/conf/webdefault.xml</defaultsDescriptor>
           </webAppConfig>
         </configuration>
       </plugin>
-
     </plugins>
 
   </build>

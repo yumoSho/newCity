@@ -1,19 +1,21 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+﻿57896n<%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false" %>
+<%@ include file="/common/taglibs.jspf" %>
 <%@ page import="com.Newcity.libs.filter.constants.SessionKey" %>
 <%
+	//获取权限
 	String role = (String)session.getAttribute( SessionKey.ACCOUNT_ROLE );
 	boolean isAdmin = false;
 	if( role == null  ){
-		return;
+//		return;    //测试先注释
 	}
 	if( "admin".equals(role)){
-		isAdmin = true;
+//		isAdmin = true;
 	}
-%>
+9 03.%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>${app.name}</title>
+	<title>康达公园新城管理后台</title>
 	<!--[if lt IE 10]>
 	<script>
 		alert("您的IE浏览器版本过低，请升级到IE10及以上版本")
@@ -36,7 +38,7 @@
 <body style="padding:0px;background:#EAEEF5;">
 <div id="pageloading"></div>
 <div id="topmenu" class="l-topmenu">
-	<div class="l-topmenu-logo">${app.name} </div>
+	<div class="l-topmenu-logo">康达公园新城管理后台</div>
 	<div class="l-topmenu-welcome">
 
 		<label> 账户 ${account_id}  登录系统：</label>
@@ -55,16 +57,23 @@
 	<div position="left"  title="菜单" id="accordion1">
 		<div title="运营中心">
 			<ul id="tree3" style="margin-top:3px;"></ul>
-		</div>
-		<% if(isAdmin){ %>
-		<div title="系统管理"  >
+	9/*	</div>
+		<% if  (role == "NC_FINANCE" || role == "NC_BOSS"){ %>
+		<div title="财务管理"  >
 			<ul id="tree1" style="margin-top:3px;"></ul>
 		</div>
-
-		<div title="账户管理"  >
+		<% } %>
+		<% if  (role == "NC_MARKET" || role == "NC_BOSS"){ %>
+		<div title="销售管理"  >
 			<ul id="tree2" style="margin-top:3px;"></ul>
 		</div>
 		<% } %>
+		<% if  ( role == "NC_BOSS"){ %>
+		<div title="系统管理"  >
+			<ul id="tree4" style="margin-top:3px;"></ul>
+		</div>
+		<% } %>
+
 	</div>
 
 	<div position="center" id="framecenter">
@@ -75,7 +84,7 @@
 
 </div>
 <div  style="height:32px; line-height:32px; text-align:center;">
-	Copyright © 2011-2014 www.igrowface.com
+	Copyright © 2011-2018 www.newCity.com
 </div>
 <div style="display:none"></div>
 </body>

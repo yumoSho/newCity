@@ -84,13 +84,12 @@ public class LoginController extends BaseController {
 
             }
 
-            if (map.get("code") != null && Integer.parseInt(map.get("code").toString()) == -1) {
-                return jsonResult.setup(ResultCode.INVALID_RESULT, map.get("message"));
-            } else if (map.get("code") != null && Integer.parseInt(map.get("code").toString()) == 0) {
-                //判断是否冻结
-
-            } else {
-                return jsonResult.setup(ResultCode.SERVER_ERROR, map.get("message"));
+            if (sysUserMarket.getState() != null && sysUserMarket.getState() == 2) {
+                // 离职
+                return jsonResult.setup(ResultCode.INVALID_RESULT, "该用户不存在！");
+            } else if (sysUserMarket.getState() != null && sysUserMarket.getState() == 1) {
+                // 判断是否冻结
+                return jsonResult.setup(ResultCode.INVALID_RESULT, "该用户已冻结！");
             }
 
             //添加token

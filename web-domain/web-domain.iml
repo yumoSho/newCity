@@ -53,7 +53,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:jconsole:1.8.0">
         <CLASSES>
-          <root url="jar://D:/Program Files/Java/jdk1.8.0_91/lib/jconsole.jar!/" />
+          <root url="jar://D:/Program Files/Java/jdk1.8.0_141/lib/jconsole.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -62,7 +62,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:tools:1.8.0">
         <CLASSES>
-          <root url="jar://D:/Program Files/Java/jdk1.8.0_91/lib/tools.jar!/" />
+          <root url="jar://D:/Program Files/Java/jdk1.8.0_141/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -86,6 +86,12 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-security:8.1.0.RC2" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:8.1.0.RC2" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:servlet-api:3.0.20100224" level="project" />
+    <orderEntry type="library" name="Maven: org.mortbay.jetty:jsp-2.1:6.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jdt:core:3.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mortbay.jetty:servlet-api-2.5:6.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mortbay.jetty:jetty-util:6.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mortbay.jetty:jsp-api-2.1:6.0.0" level="project" />
+    <orderEntry type="library" name="Maven: ant:ant:1.6.5" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.6" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" level="project" />
