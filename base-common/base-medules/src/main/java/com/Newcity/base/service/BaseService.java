@@ -1,14 +1,17 @@
 package com.Newcity.base.service;
 
+import com.Newcity.libs.dmo.vo.Page;
 import com.Newcity.libs.logger.ILogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import java.util.List;
+
 /**
  * Created by dev on 2017/5/3.
  */
-public class BaseService implements ILogger{
+public class BaseService<E> implements ILogger{
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
@@ -18,6 +21,17 @@ public class BaseService implements ILogger{
         TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
     }
 
+   /* public List<E> queryInfo(Page page){
+        return null;
+    }
+
+    public Long queryCount(Page page){
+        return null;
+    }
+
+    public E getInfo(String id){
+        return null;
+    }*/
 
     public void info(String message){
         logger.info(" Service  info  "+message);

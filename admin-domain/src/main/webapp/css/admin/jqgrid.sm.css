@@ -1,0 +1,297 @@
+@charset "utf-8";
+/**
+ * 简单风格 jqgrid 样式
+ * @author vacoor
+ */
+/* */
+.ui-jqgrid table {
+    font-size: 12px;
+}
+
+.ui-jqgrid .ui-priority-secondary {
+    background: #f9f9f9 none;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.ui-jqgrid .ui-state-highlight,
+.ui-jqgrid .ui-widget-content .ui-state-highlight,
+.ui-jqgrid .ui-widget-header .ui-state-highlight {
+    background: #fff5cc none;
+    /*background: #fbf9ee none;*/
+}
+
+.ui-jqgrid,
+.ui-jqgrid.ui-widget-content,
+.ui-jqgrid .ui-widget-content {
+    border: 0;
+    color: #444;
+}
+
+.ui-jqgrid .ui-jqgrid-htable th {
+    height: 2em;
+    line-height: 2;
+    font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-hdiv {
+    background: -moz-linear-gradient(top, #f9f9f9 0%, #eaeaea 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #eaeaea)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f9f9f9 0%, #eaeaea 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f9f9f9 0%, #eaeaea 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f9f9f9 0%, #eaeaea 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #f9f9f9 0%, #eaeaea 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#eaeaea', GradientType=0); /* IE6-8 */
+
+    /*-moz-box-shadow: 0 0 2px #bbb;*/
+    /*-webkit-box-shadow: 0 0 2px #bbb;*/
+    /*box-shadow: 0 0 2px #bbb;*/
+}
+
+/*
+.ui-jqgrid .ui-jqgrid-view {
+    -moz-box-shadow: 0 0 2px #bbb;
+    -webkit-box-shadow: 0 0 2px #bbb;
+    box-shadow: 0 0 2px #bbb;
+}
+*/
+
+.ui-jqgrid-labels th[id*="_cb"]:first-child div {
+    padding-top: 0;
+    text-align: center;
+}
+
+.ui-th-column,
+.ui-jqgrid .ui-jqgrid-htable th.ui-th-column,
+.ui-jqgrid .jqgrid-rownum {
+    border-right: 0;
+    padding: 5px 2px 0;
+}
+
+.ui-jqgrid .ui-jqgrid-htable th div {
+    padding: 0 6px;
+    height: 17px;
+    line-height: 17px;
+}
+
+.ui-jqgrid tr.ui-row-ltr td,
+.ui-jqgrid tr.ui-row-rtl td {
+    border-right: 0;
+    border-bottom: 1px solid #E1E1E1;
+    padding: 6px 8px;
+}
+
+.ui-th-column,
+.ui-jqgrid .ui-jqgrid-htable th.ui-th-column {
+    border-bottom: 0;
+    text-align: left;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-jqgrid tr.jqgrow td {
+    /*line-height: 2;*/
+    text-overflow: ellipsis;
+    border-color: #ebebeb;
+    background: transparent none;
+}
+
+.ui-jqgrid .ui-jqgrid-bdiv .ui-state-hover {
+    background: #f8f8f8 none;
+}
+.ui-jqgrid .ui-jqgrid-bdiv .jqgrid-rownum {
+    padding: 0 2px;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    /*box-shadow: none;*/
+    /*border-bottom: 0;*/
+}
+
+.ui-jqgrid .ui-jqgrid-pager {
+    height: auto;
+    border-color: transparent;
+    margin-top: 10px !important;
+}
+
+.ui-jqgrid .ui-jqgrid-pager .ui-icon {
+    text-indent: 0;
+    color: #307ecc;
+    float: none;
+    right: 2px;
+    background: none;
+}
+
+.ui-jqgrid .ui-pg-button .ui-icon {
+    display: inline-block;
+    position: static;
+    float: none;
+    margin: 0 2px !important;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: gray;
+    border: 1px solid #CCC;
+    background-color: #FFF;
+    border-radius: 100%;
+    font-size: 1.2em;
+}
+
+.ui-jqgrid .ui-pg-button:hover {
+    /*padding: 1px;*/
+}
+
+.ui-jqgrid .ui-pg-button .ui-icon:hover {
+    color: #699AB5;
+    border-color: #699AB5;
+}
+
+.ui-jqgrid .ui-pg-button.ui-state-disabled .ui-icon {
+    color: #B0B0B0;
+    background-color: #F7F7F7;
+    border-color: #DDD;
+}
+
+.ui-jqgrid .ui-pg-button.ui-state-hover {
+    background: none;
+    border-color: transparent;
+}
+
+.ui-jqgrid .ui-pg-input {
+    font-size: inherit;
+    width: 30px;
+    height: 20px;
+    line-height: 16px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    text-align: center;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border: 1px solid #d5d5d5;
+    -webkit-transition-duration: .1s;
+    transition-duration: .1s;
+}
+
+.ui-jqgrid .ui-pg-selbox {
+    display: block;
+    height: 24px;
+    width: 60px;
+    margin: 0;
+    padding: 1px;
+    line-height: normal;
+    border: 1px solid #d5d5d5;
+}
+
+/*
+.ui-jqgrid .ui-jqgrid-bdiv {
+    border-top: 1px solid #E1E1E1;
+    border: 0;
+}
+*/
+
+.ui-jqgrid .ui-pg-button .ui-icon:before {
+    width: 20px;
+    text-align: center;
+    display: inline-block;
+    /*content: '.';*/
+}
+
+.ui-icon-refresh:before {
+    content: 'R';
+}
+
+.ui-icon-seek-prev:before,
+.icon-angle-left:before {
+    content: '‹';
+}
+
+.ui-icon-seek-next:before,
+.icon-angle-right:before {
+    content: '›';
+}
+
+.ui-icon-seek-first:before,
+.icon-angle-double-left:before {
+    content: '«';
+}
+
+.ui-icon-seek-end:before,
+.icon-angle-double-right:before {
+    content: '»';
+}
+
+.ui-jqgrid .ui-search-toolbar {
+    background-color: #eff3f8;
+    border-color: #ebebeb;
+    /*border-top: 1px solid #E1E1E1;*/
+}
+
+.ui-jqgrid .ui-jqgrid-htable .ui-search-toolbar th {
+    padding: 5px 2px;
+    white-space: normal;
+}
+
+.ui-jqgrid .ui-search-table .ui-search-input input,
+.ui-jqgrid .ui-search-table .ui-search-input select {
+    height: 25px;
+    border: 1px solid #c3bbbb;
+}
+
+.ui-search-menu {
+    border-color: #bbb;
+    -moz-box-shadow: 0 2px 5px #bbb;
+    -webkit-box-shadow: 0 2px 5px #bbb;
+    box-shadow: 0 2px 5px #bbb;
+}
+
+.ui-search-menu.ui-menu .ui-menu-item {
+    margin: 2px 0;
+    padding: 0;
+}
+
+.ui-search-menu.ui-menu .ui-menu-item a {
+    padding: 2px 10px;
+}
+
+.ui-search-menu.ui-menu .ui-menu-item a.ui-state-hover {
+    background: #dadada none;
+}
+
+
+.ui-subgrid{width:500px;}
+
+
+/** S update for g **/
+.ui-th-column,
+.ui-jqgrid .ui-jqgrid-htable th.ui-th-column,
+.ui-jqgrid .jqgrid-rownum,
+.ui-jqgrid tr.ui-row-ltr td,
+.ui-jqgrid tr.ui-row-rtl td {
+    border-right: 1px solid #ebebeb;
+}
+.ui-jqgrid .ui-jqgrid-view {
+    border-top: 1px solid #ebebeb;
+    border-left: 1px solid #ebebeb;
+}
+.ui-jqgrid .ui-jqgrid-htable .ui-jqgrid-labels {
+    background-color: #f8f8f8;
+}
+/** E update for g **/
+
+
+
+table {
+    border-collapse:separate;
+}
+
+
+.ui-jqgrid-hbox .ui-jqgrid-ftable tr td{
+    background-color: #eee;
+    border-color:  #E1E1E1;
+}

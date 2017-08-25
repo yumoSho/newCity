@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<description>spring config file</description>
+
+	<import resource="classpath:spring/spring-*.xml" />
+
+	<context:annotation-config />
+	
+	<context:component-scan base-package="com.Newcity.**.dao,com.Newcity.**.service,com.Newcity.**.controller,com.Newcity.**.impl" />
+
+	<context:property-placeholder location="classpath:properties/*.properties"
+		ignore-unresolvable="true" />
+
+</beans>
