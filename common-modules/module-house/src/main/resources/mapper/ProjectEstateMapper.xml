@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Newcity.module.house.dao.ProjectEstateMapper" >
+  <resultMap id="BaseResultMap" type="com.Newcity.module.house.entity.ProjectEstateEntity" >
+    <id column="em_id" property="emId" jdbcType="VARCHAR" />
+    <result column="em_name" property="emName" jdbcType="VARCHAR" />
+    <result column="em_intro" property="emIntro" jdbcType="VARCHAR" />
+    <result column="em_address" property="emAddress" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="modification_time" property="modificationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    em_id, em_name, em_intro, em_address, contact, create_time, operator, is_delete, 
+    modification_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from project_estate
+    where em_id = #{emId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from project_estate
+    where em_id = #{emId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.Newcity.module.house.entity.ProjectEstateEntity" >
+    insert into project_estate (em_id, em_name, em_intro, 
+      em_address, contact, create_time, 
+      operator, is_delete, modification_time
+      )
+    values (#{emId,jdbcType=VARCHAR}, #{emName,jdbcType=VARCHAR}, #{emIntro,jdbcType=VARCHAR}, 
+      #{emAddress,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR}, #{isDelete,jdbcType=BIT}, #{modificationTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.Newcity.module.house.entity.ProjectEstateEntity" >
+    insert into project_estate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="emId != null" >
+        em_id,
+      </if>
+      <if test="emName != null" >
+        em_name,
+      </if>
+      <if test="emIntro != null" >
+        em_intro,
+      </if>
+      <if test="emAddress != null" >
+        em_address,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="modificationTime != null" >
+        modification_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="emId != null" >
+        #{emId,jdbcType=VARCHAR},
+      </if>
+      <if test="emName != null" >
+        #{emName,jdbcType=VARCHAR},
+      </if>
+      <if test="emIntro != null" >
+        #{emIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="emAddress != null" >
+        #{emAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null" >
+        #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.Newcity.module.house.entity.ProjectEstateEntity" >
+    update project_estate
+    <set >
+      <if test="emName != null" >
+        em_name = #{emName,jdbcType=VARCHAR},
+      </if>
+      <if test="emIntro != null" >
+        em_intro = #{emIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="emAddress != null" >
+        em_address = #{emAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null" >
+        modification_time = #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where em_id = #{emId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.Newcity.module.house.entity.ProjectEstateEntity" >
+    update project_estate
+    set em_name = #{emName,jdbcType=VARCHAR},
+      em_intro = #{emIntro,jdbcType=VARCHAR},
+      em_address = #{emAddress,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=BIT},
+      modification_time = #{modificationTime,jdbcType=TIMESTAMP}
+    where em_id = #{emId,jdbcType=VARCHAR}
+  </update>
+</mapper>

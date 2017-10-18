@@ -42,7 +42,7 @@ public class TokenUtils {
         return ACCOUNT+accountId;
     }
 
-    public static String getValueInRequest(HttpServletRequest request, String name){
+    public static String  getValueInRequest(HttpServletRequest request, String name){
         String value = request.getHeader(name);
         if(StrUtil.isNull(value)){
             Cookie[] cookie = request.getCookies();

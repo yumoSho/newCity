@@ -19,6 +19,10 @@
             <groupId>${libs-name}</groupId>
             <artifactId>libs-utils</artifactId>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
     </dependencies>
 
 

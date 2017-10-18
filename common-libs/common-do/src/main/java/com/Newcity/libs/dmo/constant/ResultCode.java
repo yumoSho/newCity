@@ -16,7 +16,7 @@ public class ResultCode {
     /**
      *code 500-600 不包含100之间为服务器内部异常错误信息
      */
-    public static final ResultCode SERVER_ERROR = new ResultCode(500, "服务器正在维护中！");
+    public static final ResultCode SERVER_ERROR = new ResultCode(500, "网络不稳定请稍后再试！");
     /**
      * code 600- 为业务逻辑错误
      */

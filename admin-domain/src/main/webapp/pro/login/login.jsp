@@ -1,14 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false" %>
+<%@ include file="/common/taglibs.jspf" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>Slick Login</title>
-    <meta name="description" content="slick Login">
-    <link rel="stylesheet" type="text/css" href="../../css/admin/login.css" />
-    <script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="../../js/admin/request.js"></script>
-    <script type="text/javascript" src="../../js/admin/login/login.js"></script>
+    <meta name="description" content="NewCity Login">
+    <link rel="stylesheet" type="text/css" href="${path}/css/admin/login.css" />
+    <script type="text/javascript" src="${path}/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var path = '${path}';
+    </script>
+    <script type="text/javascript" src="${path}/js/login/login.js"></script>
 </head>
 
 <body onkeydown="keyClick()">

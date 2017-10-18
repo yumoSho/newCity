@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Newcity.module.house.dao.ProjectUnitMapper" >
+  <resultMap id="BaseResultMap" type="com.Newcity.module.house.entity.ProjectUnitEntity" >
+    <id column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    <result column="floor_id" property="floorId" jdbcType="VARCHAR" />
+    <result column="unit_type" property="unitType" jdbcType="VARCHAR" />
+    <result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+    <result column="spare_varcahr1" property="spareVarcahr1" jdbcType="VARCHAR" />
+    <result column="spare_varcahr3" property="spareVarcahr3" jdbcType="VARCHAR" />
+    <result column="spare_varcahr2" property="spareVarcahr2" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="modification_time" property="modificationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    unit_id, floor_id, unit_type, unit_name, spare_varcahr1, spare_varcahr3, spare_varcahr2, 
+    create_time, operator, is_delete, modification_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from project_unit
+    where unit_id = #{unitId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from project_unit
+    where unit_id = #{unitId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.Newcity.module.house.entity.ProjectUnitEntity" >
+    insert into project_unit (unit_id, floor_id, unit_type, 
+      unit_name, spare_varcahr1, spare_varcahr3, 
+      spare_varcahr2, create_time, operator, 
+      is_delete, modification_time)
+    values (#{unitId,jdbcType=VARCHAR}, #{floorId,jdbcType=VARCHAR}, #{unitType,jdbcType=VARCHAR}, 
+      #{unitName,jdbcType=VARCHAR}, #{spareVarcahr1,jdbcType=VARCHAR}, #{spareVarcahr3,jdbcType=VARCHAR}, 
+      #{spareVarcahr2,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=BIT}, #{modificationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.Newcity.module.house.entity.ProjectUnitEntity" >
+    insert into project_unit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="floorId != null" >
+        floor_id,
+      </if>
+      <if test="unitType != null" >
+        unit_type,
+      </if>
+      <if test="unitName != null" >
+        unit_name,
+      </if>
+      <if test="spareVarcahr1 != null" >
+        spare_varcahr1,
+      </if>
+      <if test="spareVarcahr3 != null" >
+        spare_varcahr3,
+      </if>
+      <if test="spareVarcahr2 != null" >
+        spare_varcahr2,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="modificationTime != null" >
+        modification_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="floorId != null" >
+        #{floorId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null" >
+        #{unitType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr1 != null" >
+        #{spareVarcahr1,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr3 != null" >
+        #{spareVarcahr3,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr2 != null" >
+        #{spareVarcahr2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null" >
+        #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.Newcity.module.house.entity.ProjectUnitEntity" >
+    update project_unit
+    <set >
+      <if test="floorId != null" >
+        floor_id = #{floorId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null" >
+        unit_type = #{unitType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr1 != null" >
+        spare_varcahr1 = #{spareVarcahr1,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr3 != null" >
+        spare_varcahr3 = #{spareVarcahr3,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr2 != null" >
+        spare_varcahr2 = #{spareVarcahr2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null" >
+        modification_time = #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where unit_id = #{unitId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.Newcity.module.house.entity.ProjectUnitEntity" >
+    update project_unit
+    set floor_id = #{floorId,jdbcType=VARCHAR},
+      unit_type = #{unitType,jdbcType=VARCHAR},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      spare_varcahr1 = #{spareVarcahr1,jdbcType=VARCHAR},
+      spare_varcahr3 = #{spareVarcahr3,jdbcType=VARCHAR},
+      spare_varcahr2 = #{spareVarcahr2,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=BIT},
+      modification_time = #{modificationTime,jdbcType=TIMESTAMP}
+    where unit_id = #{unitId,jdbcType=VARCHAR}
+  </update>
+</mapper>

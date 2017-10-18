@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Newcity.module.house.dao.ProjectFloorMapper" >
+  <resultMap id="BaseResultMap" type="com.Newcity.module.house.entity.ProjectFloorEntity" >
+    <id column="floor_id" property="floorId" jdbcType="VARCHAR" />
+    <result column="em_id" property="emId" jdbcType="VARCHAR" />
+    <result column="unit_name_type" property="unitNameType" jdbcType="VARCHAR" />
+    <result column="floor_increment" property="floorIncrement" jdbcType="CHAR" />
+    <result column="floor_name" property="floorName" jdbcType="VARCHAR" />
+    <result column="unit_number" property="unitNumber" jdbcType="TINYINT" />
+    <result column="floor_tier" property="floorTier" jdbcType="INTEGER" />
+    <result column="floor_space" property="floorSpace" jdbcType="DOUBLE" />
+    <result column="floor_higit" property="floorHigit" jdbcType="DOUBLE" />
+    <result column="spare_varcahr1" property="spareVarcahr1" jdbcType="VARCHAR" />
+    <result column="spare_varcahr3" property="spareVarcahr3" jdbcType="VARCHAR" />
+    <result column="spare_varcahr2" property="spareVarcahr2" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="modification_time" property="modificationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    floor_id, em_id, unit_name_type, floor_increment, floor_name, unit_number, floor_tier, 
+    floor_space, floor_higit, spare_varcahr1, spare_varcahr3, spare_varcahr2, create_time, 
+    operator, is_delete, modification_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from project_floor
+    where floor_id = #{floorId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from project_floor
+    where floor_id = #{floorId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.Newcity.module.house.entity.ProjectFloorEntity" >
+    insert into project_floor (floor_id, em_id, unit_name_type, 
+      floor_increment, floor_name, unit_number, 
+      floor_tier, floor_space, floor_higit, 
+      spare_varcahr1, spare_varcahr3, spare_varcahr2, 
+      create_time, operator, is_delete, 
+      modification_time)
+    values (#{floorId,jdbcType=VARCHAR}, #{emId,jdbcType=VARCHAR}, #{unitNameType,jdbcType=VARCHAR}, 
+      #{floorIncrement,jdbcType=CHAR}, #{floorName,jdbcType=VARCHAR}, #{unitNumber,jdbcType=TINYINT}, 
+      #{floorTier,jdbcType=INTEGER}, #{floorSpace,jdbcType=DOUBLE}, #{floorHigit,jdbcType=DOUBLE}, 
+      #{spareVarcahr1,jdbcType=VARCHAR}, #{spareVarcahr3,jdbcType=VARCHAR}, #{spareVarcahr2,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, #{isDelete,jdbcType=BIT}, 
+      #{modificationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.Newcity.module.house.entity.ProjectFloorEntity" >
+    insert into project_floor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="floorId != null" >
+        floor_id,
+      </if>
+      <if test="emId != null" >
+        em_id,
+      </if>
+      <if test="unitNameType != null" >
+        unit_name_type,
+      </if>
+      <if test="floorIncrement != null" >
+        floor_increment,
+      </if>
+      <if test="floorName != null" >
+        floor_name,
+      </if>
+      <if test="unitNumber != null" >
+        unit_number,
+      </if>
+      <if test="floorTier != null" >
+        floor_tier,
+      </if>
+      <if test="floorSpace != null" >
+        floor_space,
+      </if>
+      <if test="floorHigit != null" >
+        floor_higit,
+      </if>
+      <if test="spareVarcahr1 != null" >
+        spare_varcahr1,
+      </if>
+      <if test="spareVarcahr3 != null" >
+        spare_varcahr3,
+      </if>
+      <if test="spareVarcahr2 != null" >
+        spare_varcahr2,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="modificationTime != null" >
+        modification_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="floorId != null" >
+        #{floorId,jdbcType=VARCHAR},
+      </if>
+      <if test="emId != null" >
+        #{emId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNameType != null" >
+        #{unitNameType,jdbcType=VARCHAR},
+      </if>
+      <if test="floorIncrement != null" >
+        #{floorIncrement,jdbcType=CHAR},
+      </if>
+      <if test="floorName != null" >
+        #{floorName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNumber != null" >
+        #{unitNumber,jdbcType=TINYINT},
+      </if>
+      <if test="floorTier != null" >
+        #{floorTier,jdbcType=INTEGER},
+      </if>
+      <if test="floorSpace != null" >
+        #{floorSpace,jdbcType=DOUBLE},
+      </if>
+      <if test="floorHigit != null" >
+        #{floorHigit,jdbcType=DOUBLE},
+      </if>
+      <if test="spareVarcahr1 != null" >
+        #{spareVarcahr1,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr3 != null" >
+        #{spareVarcahr3,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr2 != null" >
+        #{spareVarcahr2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null" >
+        #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.Newcity.module.house.entity.ProjectFloorEntity" >
+    update project_floor
+    <set >
+      <if test="emId != null" >
+        em_id = #{emId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNameType != null" >
+        unit_name_type = #{unitNameType,jdbcType=VARCHAR},
+      </if>
+      <if test="floorIncrement != null" >
+        floor_increment = #{floorIncrement,jdbcType=CHAR},
+      </if>
+      <if test="floorName != null" >
+        floor_name = #{floorName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNumber != null" >
+        unit_number = #{unitNumber,jdbcType=TINYINT},
+      </if>
+      <if test="floorTier != null" >
+        floor_tier = #{floorTier,jdbcType=INTEGER},
+      </if>
+      <if test="floorSpace != null" >
+        floor_space = #{floorSpace,jdbcType=DOUBLE},
+      </if>
+      <if test="floorHigit != null" >
+        floor_higit = #{floorHigit,jdbcType=DOUBLE},
+      </if>
+      <if test="spareVarcahr1 != null" >
+        spare_varcahr1 = #{spareVarcahr1,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr3 != null" >
+        spare_varcahr3 = #{spareVarcahr3,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr2 != null" >
+        spare_varcahr2 = #{spareVarcahr2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null" >
+        modification_time = #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where floor_id = #{floorId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.Newcity.module.house.entity.ProjectFloorEntity" >
+    update project_floor
+    set em_id = #{emId,jdbcType=VARCHAR},
+      unit_name_type = #{unitNameType,jdbcType=VARCHAR},
+      floor_increment = #{floorIncrement,jdbcType=CHAR},
+      floor_name = #{floorName,jdbcType=VARCHAR},
+      unit_number = #{unitNumber,jdbcType=TINYINT},
+      floor_tier = #{floorTier,jdbcType=INTEGER},
+      floor_space = #{floorSpace,jdbcType=DOUBLE},
+      floor_higit = #{floorHigit,jdbcType=DOUBLE},
+      spare_varcahr1 = #{spareVarcahr1,jdbcType=VARCHAR},
+      spare_varcahr3 = #{spareVarcahr3,jdbcType=VARCHAR},
+      spare_varcahr2 = #{spareVarcahr2,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=BIT},
+      modification_time = #{modificationTime,jdbcType=TIMESTAMP}
+    where floor_id = #{floorId,jdbcType=VARCHAR}
+  </update>
+</mapper>

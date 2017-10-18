@@ -1,6 +1,9 @@
-D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\entity\SysUserMarket.java
-D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\entity\SysUserFinance.java
-D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\dao\SysUserFinanceMapper.java
-D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\entity\enumeration\SysUserType.java
-D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\dao\SysUserMarketMapper.java
+D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\dao\SysUserRoleMapper.java
+D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\dao\SysUserMapper.java
+D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\service\SysUserDepartmentService.java
+D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\entity\SysUserDepartmentEntity.java
+D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\entity\SysUserRoleEntity.java
+D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\dao\SysUserDepartmentMapper.java
+D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\entity\SysUserEntity.java
+D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\util\NumberUtil.java
 D:\work space\IDEA work\NewCity\common-modules\module-business\src\main\java\com\Newcity\module\business\service\SysUserService.java

@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<%@ page language="java" pageEncoding="UTF-8" isELIgnored="false"%>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>康达公园新城管理后台</title>
+
+<link rel="stylesheet" href="${path}/css/bootstrap.min.css" />
+
+<link rel="stylesheet" href="${path}/css/fullcalendar.css" />
+<link rel="stylesheet" href="${path}/css/matrix-style.css" />
+<link rel="stylesheet" href="${path}/css/matrix-media.css" />
+<link rel="stylesheet" href="${path}/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="${path}/css/jquery.gritter.css" />
+<link rel="stylesheet" href="${path}/js/jqgrid/css/jquery-ui.theme.css">
+<link rel="stylesheet" href="${path}/js/jqgrid/css/ui.jqgrid.css">
+<link rel="stylesheet" href="${path}/css/admin/jqgrid.sm.css">
+<link rel="stylesheet" href="${path}/css/bootstrap-responsive.min.css" />
+<script type="text/javascript" src="${path}/js/layer-admin/skin/layer.css"></script>
+<style>
+    .operateBar ul li{ display:inline}
+    .redStar {
+        color: #cc0000;
+        margin-right: 5px;
+    }
+</style>
+
+<script src="${path}/js/excanvas.min.js"></script>
+<script src="${path}/js/jquery.min.js"></script>
+<script src="${path}/js/jquery.ui.custom.js"></script>
+<script src="${path}/js/bootstrap.min.js"></script>
+<script src="${path}/js/jquery.flot.min.js"></script>
+<script src="${path}/js/jquery.flot.resize.min.js"></script>
+<script src="${path}/js/jquery.peity.min.js"></script>
+<script src="${path}/js/fullcalendar.min.js"></script>
+<script src="${path}/js/matrix.js"></script>
+<script src="${path}/js/matrix.dashboard.js"></script>
+<script src="${path}/js/jquery.gritter.min.js"></script>
+<script src="${path}/js/matrix.interface.js"></script>
+<script src="${path}/js/matrix.chat.js"></script>
+<script src="${path}/js/jquery.validate.js"></script>
+<script src="${path}/js/matrix.form_validation.js"></script>
+<script src="${path}/js/jquery.wizard.js"></script>
+<script src="${path}/js/jquery.uniform.js"></script>
+<script src="${path}/js/select2.min.js"></script>
+<script src="${path}/js/matrix.popover.js"></script>
+<script src="${path}/js/jquery.dataTables.min.js"></script>
+<script src="${path}/js/matrix.tables.js"></script>
+<script src="${path}/js/common/request.js"></script>
+<script type="text/javascript" src="${path}/js/jqgrid/js/i18n/grid.locale-cn.js"></script>
+<script type="text/javascript" src="${path}/js/jqgrid/js/jquery.jqGrid.min.js"></script>
+<script type="text/javascript" src="${path}/js/jqgrid/js/jqgrid.custom.js"></script>
+<script type="text/javascript" src="${path}/js/jquery.validate.js"></script>
+<script type="text/javascript" src="${path}/js/layer-admin/layer.js"></script>
+
+<script type="text/javascript">
+    var path = "${path}";
+</script>

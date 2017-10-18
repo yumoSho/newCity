@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Newcity.module.house.dao.ProjectHouseMapper" >
+  <resultMap id="BaseResultMap" type="com.Newcity.module.house.entity.ProjectHouseEntity" >
+    <id column="house_id" property="houseId" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    <result column="house_area" property="houseArea" jdbcType="DOUBLE" />
+    <result column="house_no" property="houseNo" jdbcType="INTEGER" />
+    <result column="floor_high" property="floorHigh" jdbcType="INTEGER" />
+    <result column="house_type" property="houseType" jdbcType="VARCHAR" />
+    <result column="fitment_type" property="fitmentType" jdbcType="VARCHAR" />
+    <result column="orientation" property="orientation" jdbcType="VARCHAR" />
+    <result column="spare_varcahr1" property="spareVarcahr1" jdbcType="VARCHAR" />
+    <result column="spare_varcahr3" property="spareVarcahr3" jdbcType="VARCHAR" />
+    <result column="spare_varcahr2" property="spareVarcahr2" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="modification_time" property="modificationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    house_id, unit_id, house_area, house_no, floor_high, house_type, fitment_type, orientation, 
+    spare_varcahr1, spare_varcahr3, spare_varcahr2, create_time, operator, is_delete, 
+    modification_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from project_house
+    where house_id = #{houseId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from project_house
+    where house_id = #{houseId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.Newcity.module.house.entity.ProjectHouseEntity" >
+    insert into project_house (house_id, unit_id, house_area, 
+      house_no, floor_high, house_type, 
+      fitment_type, orientation, spare_varcahr1, 
+      spare_varcahr3, spare_varcahr2, create_time, 
+      operator, is_delete, modification_time
+      )
+    values (#{houseId,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{houseArea,jdbcType=DOUBLE}, 
+      #{houseNo,jdbcType=INTEGER}, #{floorHigh,jdbcType=INTEGER}, #{houseType,jdbcType=VARCHAR}, 
+      #{fitmentType,jdbcType=VARCHAR}, #{orientation,jdbcType=VARCHAR}, #{spareVarcahr1,jdbcType=VARCHAR}, 
+      #{spareVarcahr3,jdbcType=VARCHAR}, #{spareVarcahr2,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR}, #{isDelete,jdbcType=BIT}, #{modificationTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.Newcity.module.house.entity.ProjectHouseEntity" >
+    insert into project_house
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="houseId != null" >
+        house_id,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="houseArea != null" >
+        house_area,
+      </if>
+      <if test="houseNo != null" >
+        house_no,
+      </if>
+      <if test="floorHigh != null" >
+        floor_high,
+      </if>
+      <if test="houseType != null" >
+        house_type,
+      </if>
+      <if test="fitmentType != null" >
+        fitment_type,
+      </if>
+      <if test="orientation != null" >
+        orientation,
+      </if>
+      <if test="spareVarcahr1 != null" >
+        spare_varcahr1,
+      </if>
+      <if test="spareVarcahr3 != null" >
+        spare_varcahr3,
+      </if>
+      <if test="spareVarcahr2 != null" >
+        spare_varcahr2,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="modificationTime != null" >
+        modification_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="houseId != null" >
+        #{houseId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="houseArea != null" >
+        #{houseArea,jdbcType=DOUBLE},
+      </if>
+      <if test="houseNo != null" >
+        #{houseNo,jdbcType=INTEGER},
+      </if>
+      <if test="floorHigh != null" >
+        #{floorHigh,jdbcType=INTEGER},
+      </if>
+      <if test="houseType != null" >
+        #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="fitmentType != null" >
+        #{fitmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="orientation != null" >
+        #{orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr1 != null" >
+        #{spareVarcahr1,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr3 != null" >
+        #{spareVarcahr3,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr2 != null" >
+        #{spareVarcahr2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null" >
+        #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.Newcity.module.house.entity.ProjectHouseEntity" >
+    update project_house
+    <set >
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="houseArea != null" >
+        house_area = #{houseArea,jdbcType=DOUBLE},
+      </if>
+      <if test="houseNo != null" >
+        house_no = #{houseNo,jdbcType=INTEGER},
+      </if>
+      <if test="floorHigh != null" >
+        floor_high = #{floorHigh,jdbcType=INTEGER},
+      </if>
+      <if test="houseType != null" >
+        house_type = #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="fitmentType != null" >
+        fitment_type = #{fitmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="orientation != null" >
+        orientation = #{orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr1 != null" >
+        spare_varcahr1 = #{spareVarcahr1,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr3 != null" >
+        spare_varcahr3 = #{spareVarcahr3,jdbcType=VARCHAR},
+      </if>
+      <if test="spareVarcahr2 != null" >
+        spare_varcahr2 = #{spareVarcahr2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="modificationTime != null" >
+        modification_time = #{modificationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where house_id = #{houseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.Newcity.module.house.entity.ProjectHouseEntity" >
+    update project_house
+    set unit_id = #{unitId,jdbcType=VARCHAR},
+      house_area = #{houseArea,jdbcType=DOUBLE},
+      house_no = #{houseNo,jdbcType=INTEGER},
+      floor_high = #{floorHigh,jdbcType=INTEGER},
+      house_type = #{houseType,jdbcType=VARCHAR},
+      fitment_type = #{fitmentType,jdbcType=VARCHAR},
+      orientation = #{orientation,jdbcType=VARCHAR},
+      spare_varcahr1 = #{spareVarcahr1,jdbcType=VARCHAR},
+      spare_varcahr3 = #{spareVarcahr3,jdbcType=VARCHAR},
+      spare_varcahr2 = #{spareVarcahr2,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=BIT},
+      modification_time = #{modificationTime,jdbcType=TIMESTAMP}
+    where house_id = #{houseId,jdbcType=VARCHAR}
+  </update>
+</mapper>

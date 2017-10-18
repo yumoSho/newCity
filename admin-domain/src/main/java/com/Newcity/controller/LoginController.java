@@ -9,7 +9,8 @@ import com.Newcity.libs.dmo.constant.ResultCode;
 import com.Newcity.libs.dmo.constant.TokenConstant;
 import com.Newcity.libs.dmo.vo.JsonResult;
 import com.Newcity.libs.filter.impl.WebTokenImpl;
-import com.Newcity.module.business.entity.SysUserMarketEntity;
+import com.Newcity.libs.filter.utils.TokenUtils;
+import com.Newcity.module.business.entity.SysUserEntity;
 import com.Newcity.module.business.service.SysUserService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,13 @@ public class LoginController extends BaseController {
     private WebTokenImpl webToken;
 
 
+    /**
+     * 登陆
+     * @param object
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public JsonResult login(@RequestBody JSONObject object, HttpServletRequest request,HttpServletResponse response) {
@@ -55,21 +63,25 @@ public class LoginController extends BaseController {
                 return jsonResult.setup(ResultCode.INVALID_PARAM, "用户名格式有误");
             }
 
-            String type = "";
+            /**
+             * 后期需要遍历部门数组分配权限
+             */
+            String type = role[1];
             //通过类型判断
-            if (role[0].equals("finance")) {//财务人员
-                type = TokenConstant.TOKEN_ROLETYPE_CWRY;
+            /*if (role[0].equals("finance")) {//财务人员
+                type = "finance";
             } else if (role[0].equals("market")) {//销售人员
-                type = TokenConstant.TOKEN_ROLETYPE_YXRY;
+                type = "market";
             } else if (role[0].equals("boss")) {//管理员
-                type = TokenConstant.TOKEN_ROLETYPE_BOSS;
+                type = "boss";
             } else if (role[0].equals("admin")) {//管理员
-                type = TokenConstant.TOKEN_ROLETYPE_ADMIN;
+                type = "admin";
             }else{
                 return jsonResult.setup(ResultCode.INVALID_PARAM, "用户名格式有误");
-            }
+            }*/
 
-            SysUserMarketEntity sysUserMarketEntity = sysUserService.login(account,password,type);
+
+            SysUserEntity sysUserMarketEntity = sysUserService.login(account,password,type);
             if(sysUserMarketEntity == null){
                 return jsonResult.setup(ResultCode.INVALID_PARAM, "用户名密码错误");
             }else if(sysUserMarketEntity.getState() == Constant.USER_FREEZE){
@@ -94,7 +106,7 @@ public class LoginController extends BaseController {
 
             //添加token
             Map<String, String> mapToken = new HashMap<String, String>();
-            mapToken.put(TokenConstant.KEY_TOKEN_ROLE,role[0]);
+            mapToken.put(TokenConstant.KEY_TOKEN_ROLE,role[1]);
             mapToken.put(TokenConstant.KEY_TOKEN_STATE, sysUserMarketEntity.getState().toString());
             mapToken.put(TokenConstant.KEY_TOKEN_ACCOUNTID, sysUserMarketEntity.getId());
             mapToken.put(TokenConstant.KEY_TOKEN_IP,ip);
@@ -108,5 +120,29 @@ public class LoginController extends BaseController {
             return jsonResult.setup(ResultCode.SERVER_ERROR);
         }
 
+    }
+
+
+    /**
+     * 退出
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = "/loginOut", method = RequestMethod.GET)
+    public String loginOut(HttpServletRequest request,HttpServletResponse response) {
+        JsonResult jsonResult = new JsonResult();
+        try{
+            String token = TokenUtils.getValueInRequest(request,"token");
+            TokenUtils.newCookie("token",null,-1,response);
+            TokenUtils.newCookie("role",null,-1,response);
+            if(token == null){
+                jsonResult.setup(ResultCode.SERVER_ERROR,"token为空");
+            }
+            webToken.loginOut(token);
+        }catch (Exception e){
+
+        }
+        return "redirect:index/index";
     }
 }

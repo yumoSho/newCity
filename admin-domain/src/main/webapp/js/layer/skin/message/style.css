@@ -1,0 +1,7 @@
+/* 选择器格式为：html #layui_layer_skin文件夹名stylecss，这一点非常重要 */
+html #layui_layer_skinmessagestylecss{display:none; position: absolute; width:1989px;}
+body .layer-ext-message .layui-layer-title{background: #172d3b;color:#ffffff}
+body .layui-ext-message .layui-layer-btn{}
+body .layui-ext-message .layui-layer-btn a{}
+body .layer-ext-message .layui-layer-setwin .layui-layer-ico{background: url(icon.png) no-repeat}
+body .layer-ext-message .layui-layer-setwin .layui-layer-close1{background-position: -187px -51px;}

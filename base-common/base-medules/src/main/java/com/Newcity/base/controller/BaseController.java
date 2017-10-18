@@ -2,8 +2,10 @@ package com.Newcity.base.controller;
 
 import com.Newcity.base.entity.BaseEntity;
 import com.Newcity.base.service.BaseService;
+import com.Newcity.lib.utils.StrUtil;
 import com.Newcity.libs.dmo.vo.Page;
 import com.Newcity.libs.filter.impl.WebTokenImpl;
+import com.Newcity.libs.filter.utils.TokenUtils;
 import com.Newcity.libs.logger.ILogger;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -125,11 +127,31 @@ public class BaseController<E> implements ILogger {
 
     /**
      * 获取用户Id
+     * @param request
+     * @return
+     */
+    public String getToken(HttpServletRequest request){
+        return TokenUtils.getValueInRequest(request,"token");
+    }
+
+    /**
+     * 获取用户Id
      * @param token
      * @return
      */
     public String getAccountId(String token){
         return webToken.getAccountId(token);
+    }
+
+    /**
+     * 获取用户Id
+     * @param token
+     * @return
+     */
+    public String getAccountNo(String token){
+        String name = webToken.getAccountNo(token);
+        name = StrUtil.isNull(name) ? null : name.split("@")[0];
+        return name;
     }
 
     /**

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Newcity.module.business.dao.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="com.Newcity.module.business.entity.SysUserEntity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_number" property="userNumber" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_loginName" property="userLoginname" jdbcType="VARCHAR" />
+    <result column="user_Job_age" property="userJobAge" jdbcType="INTEGER" />
+    <result column="user_address" property="userAddress" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="parents_id" property="parentsId" jdbcType="VARCHAR" />
+    <result column="department_number" property="departmentNumber" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="modification_time" property="modificationTime" jdbcType="TIMESTAMP" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+
+  </resultMap>
+
+  <resultMap id="Base2Map" type="com.Newcity.module.business.entity.SysUserEntity">
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_number" property="userNumber" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_loginName" property="userLoginname" jdbcType="VARCHAR" />
+    <result column="user_Job_age" property="userJobAge" jdbcType="INTEGER" />
+    <result column="user_address" property="userAddress" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="parents_id" property="parentsId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="modification_time" property="modificationTime" jdbcType="TIMESTAMP" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <association property="departmentEntity" javaType="com.Newcity.module.business.entity.SysUserDepartmentEntity">
+      <id column="d_department_id" property="departmentId" />
+      <result column="d_department_name" property="departmentName"/>
+      <result column="d_department_key" property="departmentKey"/>
+      <result column="d_department_info" property="departmentInfo"/>
+      <result column="d_parents_id" property="parentsId"/>
+    </association>
+    <association property="sysUserRoleEntity" javaType="com.Newcity.module.business.entity.SysUserRoleEntity">
+      <id column="r_role_id" property="roleId" />
+      <result column="r_role_name" property="roleName"/>
+      <result column="r_role_type" property="roleType"/>
+    </association>
+  </resultMap>
+
+  <sql id="sql_limit">
+    <if test=" pageSize !=null and pageSize !='' ">
+      limit
+    </if>
+    <if test=" startIndex !=null and startIndex != -1 ">
+      #{startIndex} ,
+    </if>
+    <if test=" pageSize !=null and pageSize != -1 ">
+      #{pageSize}
+    </if>
+  </sql>
+
+  <sql id="sql_condition">
+    <if test=" params.userLoginname !=null and params.userLoginname !='' ">
+      and root.user_loginName = #{params.userLoginname}
+    </if>
+    <if test=" params.userType !=null and params.userType !='' ">
+      and root.user_type = #{params.userType}
+    </if>
+    and root.is_delete = 0
+  </sql>
+
+  <sql id="sql_order">
+    <if test="order != null and order != ''">
+      order by #{order}
+    </if>
+  </sql>
+
+  <sql id="Base_Column_List" >
+    root.id, root.user_name, root.user_phone,root.user_number, root.user_email, root.user_loginName
+    ,root.password, root.user_Job_age, root.user_address,
+    root.state, root.parents_id, root.create_time, root.operator, root.is_delete, root.modification_time,root.user_type
+  </sql>
+
+  <select id="queryInfo" resultMap="Base2Map" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    ,d.department_name as d_department_name
+    from sys_user root
+    LEFT JOIN sys_user_department d ON d.department_id = root.department_number and d.is_delete = 0
+    where 1=1
+    <include refid="sql_condition"/>
+    <include refid="sql_order"/>
+    <include refid="sql_limit"/>
+  </select>
+
+  <select id="queryCount" resultType="Long" parameterType="map">
+    select count(1)
+    from sys_user root
+    where 1=1
+    <include refid="sql_condition"/>
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_user root
+    where root.id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.Newcity.module.business.entity.SysUserEntity" >
+    insert into sys_user (id, user_name, user_phone,
+      user_email, user_loginName,password, user_Job_age,user_number,
+      user_address, state, parents_id, user_type,department_number,
+      create_time, operator, is_delete,
+      modification_time)
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR},
+      #{userEmail,jdbcType=VARCHAR}, #{userLoginname,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR}, #{userJobAge,jdbcType=INTEGER},
+      #{userNumber,jdbcType=VARCHAR},#{userAddress,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{parentsId,jdbcType=VARCHAR},
+      #{userType,jdbcType=VARCHAR},#{departmentNumber,jdbcType=VARCHAR},now(), #{operator,jdbcType=VARCHAR}, 0,
+      now())
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.Newcity.module.business.entity.SysUserEntity" >
+    update sys_user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userJobAge != null" >
+        user_Job_age = #{userJobAge,jdbcType=INTEGER},
+      </if>
+      <if test="userAddress != null" >
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="parentsId != null" >
+        parents_id = #{parentsId,jdbcType=VARCHAR},
+      </if>
+      modification_time = now(),
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR} and is_delete = 0
+  </update>
+
+  <sql id="sql_LoginCondition">
+    <if test=" userLoginname !=null and userLoginname !='' ">
+      and root.user_loginName = #{userLoginname}
+    </if>
+    <if test=" password !=null and password !='' ">
+      and root.password = #{password}
+    </if>
+    <if test=" userType !=null and userType !='' ">
+      and root.user_type = #{userType}
+    </if>
+    and root.is_delete = 0
+  </sql>
+
+  <select id="queryInfoByLogin" resultMap="Base2Map" parameterType="com.Newcity.module.business.entity.SysUserEntity">
+    select root.* ,
+    d.department_id as d_department_id,
+    d.department_key as d_department_key,
+    d.department_name as d_department_name,
+    d.department_info as d_department_info,
+    d.parents_id as d_parents_id,
+    r.role_id as r_role_id,
+    r.role_name as r_role_name,
+    r.role_type as r_role_type
+    from sys_user root
+    LEFT JOIN sys_user_department d ON d.department_id = root.department_number and d.is_delete = 0
+    LEFT JOIN sys_user_role r ON r.role_id = root.role_id and r.is_delete = 0
+    where 1=1
+    <include refid="sql_LoginCondition"/>
+  </select>
+
+  <select id="getDepartmentByCount" resultType="java.lang.Long" parameterType="java.lang.String">
+    select count(1) from sys_user
+    where department_number = #{departmentId}
+  </select>
+  
+  <select id="isExistLoginName" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select count(1) from sys_user
+    where substring_index(user_loginName,'@',1) = #{loginName}
+  </select>
+
+  <select id="getInfo" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select * from sys_user
+    where id = #{id} and is_delete = 0
+  </select>
+
+
+</mapper>

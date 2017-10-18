@@ -39,7 +39,6 @@ public class WebTokenFiler implements Filter {
         //登录请求
         allowURI.add("/login/login");
         //静态页面
-        allowURI.add("/login.html");
         allowURI.add("/css");
         allowURI.add("/js");
         logger.info("loading WebTokenFilter end !");
@@ -67,12 +66,15 @@ public class WebTokenFiler implements Filter {
         JsonResult jsonResult = new JsonResult();
         String token = TokenUtils.getValueInRequest(httpRequest,"token");
 
+        String uri = httpRequest.getRequestURI();
+        String projectName = "/"+uri.split("/")[1];
+
         if(token != null && !"".equals(token.trim())){
             //token是否存在
             if(webToken.isExist(token)){
                 logger.info(" token is failure");
                 jsonResult.setup(ResultCode.INVALID_TOKEN);
-                write(response,jsonResult);
+                write(httpResponse,jsonResult);
                 return;
             }
             //token 是否登录
@@ -89,12 +91,12 @@ public class WebTokenFiler implements Filter {
                 }else{
                     logger.info(" token refresh error   !!!!!!!!!!!!!!!!!");
                     jsonResult.setup(ResultCode.INVALID_TOKEN);
-                    write(response,jsonResult);
+                    write(httpResponse,jsonResult);
                     return;
                 }
             }else{
                 jsonResult.setup(ResultCode.NEED_LOGIN);
-                write(response,jsonResult);
+                write(httpResponse,jsonResult);
                 return;
             }
         }
@@ -105,7 +107,6 @@ public class WebTokenFiler implements Filter {
             return;
         }*/
 
-        String uri = httpRequest.getRequestURI();
         //过滤请求
         for(String url : allowURI){
             if(uri.contains(url)){
@@ -115,9 +116,9 @@ public class WebTokenFiler implements Filter {
         }
 
         logger.info(" token is null");
-        httpResponse.sendRedirect("/web-domain/admin/login.html");
+        httpResponse.sendRedirect(projectName+"/pro/login/login.jsp");
         jsonResult.setup(ResultCode.INVALID_TOKEN,"token is null");
-        write(response,jsonResult);
+        write(httpResponse,jsonResult);
         return;
     }
 

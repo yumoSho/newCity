@@ -1,8 +1,6 @@
 $(function()
 {
-    var path = "/web-domain";
-    if ($(this).val() == '' || $(this).val() == $(this).attr('placeholder'))
-    {
+    if ($(this).val() == '' || $(this).val() == $(this).attr('placeholder')){
 
         $(this).val($(this).attr('placeholder'));
         $(this).addClass('placeholder');
@@ -35,9 +33,8 @@ function adminLogin(){
             if(data.result != 0){
                 alert(data.message);
             }else {
-                window.location.href= path + "/pro/index/initialize";
+                window.location.href= path + "/index/index";
             }
-
         },
         error : function(e) {
             console.log(e);

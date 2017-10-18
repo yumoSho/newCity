@@ -1,0 +1,9 @@
+/* 选择器格式为：html #layui_layer_skin文件夹名stylecss，这一点非常重要 */
+html #layui_layer_skinalertpopstylecss{display:none; position: absolute; width:1989px;}
+body .layer-ext-alertpop{border: 6px solid rgba(0,0,0,.3);
+    border-radius: 5px;
+    box-shadow: none;}
+body .layer-ext-alertpop .layui-layer-title{}
+body .layer-ext-alertpop .layui-layer-btn{}
+body .layer-ext-alertpop .layui-layer-btn .layui-layer-btn0{display: inline-block;padding: 0px 14px;color: #FFF;border-radius: 2px;
+    border: 1px solid #c4d466;cursor: pointer;background-color: #a7c543;text-decoration: none;font-size: 14px;font-weight: 700;}

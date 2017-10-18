@@ -113,8 +113,8 @@
         actions2: function (value, opts) {
             var ctx = (window.Glanway || window)['contextPath'] || '';
             return '<div class="operateBox">' +
-                '<img onclick="jQuery.fn.fmatter.rowactions2.call(this, \'edit\');" src="' + ctx + '/images/admin/icon-edit01.png" width="15" height="15" title="Edit" alt="Edit">' +
-                '<img onclick="jQuery.fn.fmatter.rowactions2.call(this, \'del\');" src="' + ctx + '/images/admin/icon-delete01.png" width="15" height="15" title="Delete" alt="Delete">' +
+                '<img onclick="jQuery.fn.fmatter.rowactions2.call(this, \'edit\');" src="' + ctx + '../images/admin/icon-edit01.png" width="15" height="15" title="Edit" alt="Edit">' +
+                '<img onclick="jQuery.fn.fmatter.rowactions2.call(this, \'del\');" src="' + ctx + '../images/admin/icon-delete01.png" width="15" height="15" title="Delete" alt="Delete">' +
                 '</div>';
         },
         rowactions2: function (act) {

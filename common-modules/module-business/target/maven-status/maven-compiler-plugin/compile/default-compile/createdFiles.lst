@@ -1,6 +1,9 @@
-com\Newcity\module\business\dao\SysUserMarketMapper.class
-com\Newcity\module\business\entity\SysUserFinance.class
+com\Newcity\module\business\dao\SysUserMapper.class
+com\Newcity\module\business\service\SysUserDepartmentService.class
+com\Newcity\module\business\entity\SysUserEntity.class
+com\Newcity\module\business\entity\SysUserRoleEntity.class
+com\Newcity\module\business\dao\SysUserDepartmentMapper.class
 com\Newcity\module\business\service\SysUserService.class
-com\Newcity\module\business\entity\SysUserMarket.class
-com\Newcity\module\business\dao\SysUserFinanceMapper.class
-com\Newcity\module\business\entity\enumeration\SysUserType.class
+com\Newcity\module\business\util\NumberUtil.class
+com\Newcity\module\business\entity\SysUserDepartmentEntity.class
+com\Newcity\module\business\dao\SysUserRoleMapper.class

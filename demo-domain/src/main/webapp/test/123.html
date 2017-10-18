@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+    <script src="../js/jquery.min.js"></script>
+
+</head>
+
+<body>
+<!--悬浮底部 -->
+<div id="div">
+    <strong>
+        <a href=" ">私密树,单身圈等尽在
+            <span><u style="color:red;" >红尘小屋</u></span>
+        </a>
+    </strong>
+</div>
+
+
+<script>
+    /**
+     * 获取mimeType
+     * */
+    var _fixType = function (type) {
+        type = type.toLowerCase().replace(/jpg/i, 'jpeg');
+        var r = type.match(/png|jpeg|bmp|gif/)[0];
+        return 'image/' + r;
+    };
+
+    var divContent = document.getElementById("div").innerHTML;
+    var data = "data:image/svg+xml,"
+        + "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>"
+        + "<foreignObject width='100%' height='100%'>"
+        + "<div xmlns='http://www.w3.org/1999/xhtml' style='font-size:16px;font-family:Helvetica'>"
+        + divContent + "</div>" + "</foreignObject>" + "</svg>";
+    //2.svg转成canvas
+    var img = new Image();
+    img.src = data;document.getElementsByTagName('body')[0].appendChild(img);
+
+    var canvas = document.createElement('canvas');  //准备空画布
+
+    var context = canvas.getContext('2d');  //取得画布的2d绘图上下文
+    context.drawImage(img, 0, 0);
+    //3. 图片导出为 png 格式
+    var imgData = canvas.toDataURL();
+
+
+    var imgd = new Image();
+    imgd.src = imgData;document.getElementsByTagName('body')[0].appendChild(imgd);
+
+</script>
+</body>
+</html>

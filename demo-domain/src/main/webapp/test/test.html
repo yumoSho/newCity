@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>图片生成</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/email.js"></script>
+</head>
+
+<body>
+<div style=" float: left; width:750px;height:510px;background: none,#8db6cf;position: relative;" >
+
+    <img id="imgP" src="images/Happybirthday1.png" style="margin: 15px">
+    <input type="text" id="rise" style="position: absolute;  left: 112px;  top: 115px;" value="尊敬的领导同志：" readonly="true">
+    <textarea id="txt" style="position: absolute;  left: 162px;  top: 160px;height: 116px; width: 233px;">
+您好！新年到来，愿在新的一年中，你的快乐像人民币一样不断升值，健康状况像股市一样坚挺，财运像楼市一样火爆，幸福指数像油价一样层层攀高!
+    </textarea>
+    <input type="text" id="inscribeDate" style="position: absolute;  left: 273px;  top: 300px;"  value="" readonly="true">
+    <input type="text" id="inscribeName" style="position: absolute;  left: 253px;  top: 322px;"  value="创享科技有限公司" readonly="true">
+</div>
+
+<canvas id="text" ></canvas>
+<div style="width: 200px; height: 100px; ">
+    <table>
+        <tr>
+            <td>
+                <button onclick= "textToImg()">生成图片</button>
+
+                <button onclick="saveImg()">保存</button>
+            </td>
+        </tr>
+    </table>
+    图片路径： <input style="width:500px;" id="dataA"/>
+</div>
+<canvas id="canvas" style="display:block"></canvas>
+<div style="margin-left: 650px; position: relative;  left: 3rem;  top: -250.5px;" ><img id="img" style="border: 1px solid;" /></div>
+<div>
+
+</div>
+<script>
+</script>
+</body>
+</html>

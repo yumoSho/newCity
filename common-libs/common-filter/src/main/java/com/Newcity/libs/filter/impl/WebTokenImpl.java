@@ -70,6 +70,8 @@ public class WebTokenImpl implements WebToken {
             redis.hset(tokenStr,mapParams,LoginToken);
             //设置cookie返回给客户端
             TokenUtils.newCookie("token",token,LoginToken,response);
+            //设置cookie返回给客户端
+            TokenUtils.newCookie("role",accountRole,LoginToken,response);
             Map<String,Object> mapResult = new HashMap<String,Object>();
             mapResult.put("token",token);
             mapResult.put("LoginToken",LoginToken);
@@ -109,26 +111,40 @@ public class WebTokenImpl implements WebToken {
         return -2L;
     }
 
+    /**
+     * 方案一：直接删除Tokne
+     * @param token
+     * @return
+     */
     @Override
-    public boolean loginOut(String token,String accountIp,String accountNo){
-        //清空用户用户token
-        String accountNoStr = TokenUtils.buildAccountKey(accountIp+"-"+accountNo);
-        /*String tokenStr = TokenUtils.buildTokenKey(token);
-        String tokenOld = redis.get(accountNoStr);
-        if(tokenOld != null){
-        }*/
-        redis.del(accountNoStr);
+    public boolean loginOut(String token){
         // 删除账号id与token的关系
         redis.del( TokenUtils.buildTokenKey(token));
         return true;
     }
 
     @Override
-    public String getAccount(String token){
+    public String getAccountId(String token){
         if(StringUtils.isEmpty(token)){
             return null;
         }
-        return redis.hget(token, TokenConstant.KEY_TOKEN_ACCOUNT);
+        return redis.hget(TokenUtils.buildTokenKey(token), TokenConstant.KEY_TOKEN_ACCOUNTID);
+    }
+
+    @Override
+    public String getAccountNo(String token){
+        if(StringUtils.isEmpty(token)){
+            return null;
+        }
+        return redis.hget(TokenUtils.buildTokenKey(token), TokenConstant.KEY_TOKEN_ACCOUNT);
+    }
+
+    @Override
+    public String isAccountIp(String token){
+        if(StringUtils.isEmpty(token)){
+            return null;
+        }
+        return redis.hget(TokenUtils.buildTokenKey(token), TokenConstant.KEY_TOKEN_IP);
     }
 
 }

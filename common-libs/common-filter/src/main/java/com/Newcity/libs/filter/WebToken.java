@@ -11,6 +11,8 @@ public interface WebToken {
     boolean isExist(String token);
     boolean isLogin(String token);
     Long refresh(String token);
-    boolean loginOut(String token, String accountIp, String accountNo);
-    String getAccount(String token);
+    boolean loginOut(String token);
+    String getAccountId(String token);
+    String getAccountNo(String token);
+    String isAccountIp(String token);
 }

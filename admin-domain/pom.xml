@@ -1,12 +1,310 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.Newcity.admin</groupId>
+  <artifactId>admin-domain</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>admin-domain</name>
+  <url>http://maven.apache.org</url>
 
-    <groupId>com.Newcity.admin</groupId>
-    <artifactId>admin-domain</artifactId>
-    <version>1.0-SNAPSHOT</version>
+  <properties>
+    <spring-version>4.2.5.RELEASE</spring-version>
+    <mybatis-spring-version>1.2.2</mybatis-spring-version>
+    <mybatis-version>3.2.8</mybatis-version>
+    <libs-version>1.0-SNAPSHOT</libs-version>
+    <compiler-encoding>utf8</compiler-encoding>
+    <jdk-version>1.8</jdk-version>
+    <libs-name>com.Newcity.libs</libs-name>
+  </properties>
+
+  <dependencies>
+
+    <!-- spring相关 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-oxm</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-expression</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.8.9</version>
+    </dependency>
+
+    <!-- web相关 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
+    <!-- web相关 -->
+
+    <!-- 数据库相关 -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${mybatis-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>${mybatis-spring-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.29</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.38</version>
+    </dependency>
+    <!-- 数据库相关 -->
+
+    <!-- javaee相关 -->
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- javaee相关 -->
+
+    <!-- 第三方jar -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.4</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.4</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>2.7.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>22.0</version>
+    </dependency>
+
+    <!--libs-->
+    <dependency>
+      <groupId>${libs-name}</groupId>
+      <artifactId>redis-interface</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>${libs-name}</groupId>
+      <artifactId>sql-mybatis</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>${libs-name}</groupId>
+      <artifactId>common-filter</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+    <!--modules-->
+    <dependency>
+      <groupId>com.Newciyt.common</groupId>
+      <artifactId>module-house</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.Newciyt.common</groupId>
+      <artifactId>module-business</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.Newciyt.common</groupId>
+      <artifactId>module-customer</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+    <!--容器-->
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlets</artifactId>
+      <version>8.1.0.RC2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-webapp</artifactId>
+      <version>8.1.0.RC2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jsp-2.1</artifactId>
+      <version>6.0.0</version>
+    </dependency>
+
+    <!--单元测试-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
 
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <dev>dev</dev>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+
+    <profile>
+      <id>test</id>
+      <properties>
+        <dev>test</dev>
+      </properties>
+    </profile>
+
+  </profiles>
+
+  <build>
+
+    <finalName>admin-domain</finalName>
+
+    <!-- 根据模式获取相应资源 -->
+    <resources>
+      <resource>
+        <directory>../admin-domain/src/main/resources</directory>
+        <includes>
+          <include>**/web/spring-*.xml</include>
+          <include>**/spring/*.xml</include>
+          <include>**/mapper/*.xml</include>
+          <include>**/properties/*.properties</include>
+        </includes>
+      </resource>
+
+      <resource>
+        <directory>../admin-domain/src/main/resources/dev/${dev}</directory>
+        <!-- 指定资源输出路径，默认是classpath下 -->
+        <targetPath>properties</targetPath>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </resource>
+
+      <resource>
+        <directory>../admin-domain/src/main/resources/dev/${dev}</directory>
+        <includes>
+          <include>logback.xml</include>
+        </includes>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>${jdk-version}</source>
+          <target>${jdk-version}</target>
+          <encoding>${compiler-encoding}</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.26</version>
+        <configuration>
+          <connectors>
+            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+              <port>8081</port>
+            </connector>
+          </connectors>
+          <scanIntervalSeconds>10</scanIntervalSeconds>
+          <webAppConfig>
+            <defaultsDescriptor>src/main/resources/conf/webdefault.xml</defaultsDescriptor>
+          </webAppConfig>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

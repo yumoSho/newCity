@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Newcity.module.business.dao.SysUserDepartmentMapper" >
+  <resultMap id="BaseResultMap" type="com.Newcity.module.business.entity.SysUserDepartmentEntity" >
+    <id column="department_id" property="departmentId" jdbcType="BIGINT" />
+    <result column="department_name" property="departmentName" jdbcType="VARCHAR" />
+    <result column="department_info" property="departmentInfo" jdbcType="VARCHAR" />
+    <result column="department_key" property="departmentKey" jdbcType="VARCHAR" />
+    <result column="parents_id" property="parentsId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="modification_time" property="modificationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    root.department_id, root.department_name, root.department_info, root.department_key, root.parents_id, root.create_time, root.operator,
+    root.is_delete, root.modification_time
+  </sql>
+
+  <sql id="sql_conditions">
+    and root.is_delete = 0
+  </sql>
+
+  <sql id="sql_path">
+    <if test="pageSize != null and pageSize != -1">
+      limit
+    </if>
+    <if test="startIndex != -1">
+      #{startIndex} ,
+    </if>
+    <if test="pageSize != null and pageSize != -1">
+      #{pageSize}
+    </if>
+  </sql>
+
+  <sql id="sql_order">
+    <if test="order != null and order != ''">
+      order by #{order}
+    </if>
+  </sql>
+
+  <select id="queryInfo" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from sys_user_department root
+    where 1=1
+    <include refid="sql_conditions" />
+    <include refid="sql_order"/>
+    <include refid="sql_path"/>
+  </select>
+
+  <select id="queryCount" resultType="java.lang.Long" parameterType="map">
+    select
+    count(1)
+    from sys_user_department root
+    where 1=1
+    <include refid="sql_conditions" />
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_department root
+    where root.department_id = #{departmentId,jdbcType=BIGINT}
+  </select>
+
+  <insert id="insert" parameterType="com.Newcity.module.business.entity.SysUserDepartmentEntity" >
+    insert into sys_user_department ( department_name, department_info,department_key,
+      parents_id, create_time, operator, 
+      is_delete, modification_time)
+    values (#{departmentName,jdbcType=VARCHAR}, #{departmentInfo,jdbcType=VARCHAR}
+      ,#{departmentKey,jdbcType=VARCHAR},#{parentsId,jdbcType=VARCHAR}, now(), #{operator,jdbcType=VARCHAR},
+      0, now())
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.Newcity.module.business.entity.SysUserDepartmentEntity">
+    update sys_user_department
+    <set >
+      <if test="departmentName != null" >
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentInfo != null" >
+        department_info = #{departmentInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentKey != null" >
+        department_key = #{departmentKey,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+        modification_time = now(),
+    </set>
+    where department_id = #{departmentId,jdbcType=BIGINT}
+  </update>
+
+  <update id="deleteInfo" parameterType="com.Newcity.module.business.entity.SysUserDepartmentEntity"  >
+    update sys_user_department
+    <set>
+      is_delete = 1,
+      <if test="operator != null and operator != ''">
+        operator = #{operator}
+      </if>
+    </set>
+    where department_id IN
+    <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </update>
+
+  <select id="getDepartmentName" resultMap="BaseResultMap" parameterType="com.Newcity.module.business.entity.SysUserDepartmentEntity">
+    select department_name,department_key,department_id
+    from sys_user_department
+  </select>
+</mapper>
