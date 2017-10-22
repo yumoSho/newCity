@@ -43,8 +43,9 @@ var tree_account = [
 var tree_personnel = [
 <%--<% if  ( role == "NC_BOSS"){ %>--%>
 { text:"兼职" , isexpand: true , children:[
-{url:"${path}/admin/project/list.jsp",text:"部门管理" } ,
-{url:"${path}/sysadmin/position/PositionMainModel/manage/list.jsp" ,text:"职位管理" }
+{url:"${path}/pro/department/list.jsp",text:"部门管理" } ,
+{url:"${path}/pro/department/add.jsp" ,text:"部门添加" },
+{url:"${path}/pro/department/edit.jsp" ,text:"部门编辑" }
 ]},
 { text:"活动" , isexpand: true , children:[
 {text:"众筹" ,isexpand:true , url:"${path}/sysadmin/activity/Crowd/list.jsp" } ,

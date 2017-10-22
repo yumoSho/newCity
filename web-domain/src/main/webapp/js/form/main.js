@@ -75,7 +75,7 @@
 	//Ajax HTML Query Success Function 
 	QueryHtml.prototype.success = function(data ){
 		var rows = {};
-		rows.Rows = data.message;  
+		rows.Rows = data;
 		grid.set({ data: rows });  
 	}
 	//Ajax HTML Query
@@ -122,8 +122,15 @@
 				$("#"+key).html('加载中 <img src="/images/loadingbox.gif" alt="加载中..." width="35" height="35"/>');  
 			},
 			success: function(data){
-				success1(data,name);
-				QueryHtml.prototype.queryTotal(url , jsonStr);
+				if(data.result != 0){
+					alert(data.message);
+				}else{
+					// console.log(data.datas.data);
+                    success1(data.datas.data);
+					// grid.loadServerData = data.datas;
+                    QueryHtml.prototype.successTotal(data.datas);
+                    // QueryHtml.prototype.queryTotal(url , jsonStr);
+                }
 			} ,
 			error: HttpErr,
 			complete:function(){

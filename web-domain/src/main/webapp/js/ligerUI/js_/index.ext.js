@@ -48,7 +48,7 @@
 		
 		
 		$("#tree1").ligerTree({
-			data : tree_system,
+			data : tree_financial,
 			checkbox: false,
 			slide: false,
 			nodeWidth: 120,
@@ -89,7 +89,7 @@
 		
  
 		$("#tree3").ligerTree({
-			data : tree_operation ,
+			data : tree_personnel ,
 			checkbox: false,
 			slide: false,
 			nodeWidth: 120,
@@ -108,7 +108,7 @@
 		});
  
 		$("#tree4").ligerTree({
-			data : tree_ad ,
+			data : tree_system ,
 			checkbox: false,
 			slide: false,
 			nodeWidth: 120,

@@ -35,7 +35,7 @@ function adminLogin(){
             if(data.result != 0){
                 alert(data.message);
             }else {
-                window.location.href= path + "/index/initialize";
+                window.location.href= path + "/pro/index/initialize";
             }
 
         },

@@ -8,15 +8,18 @@
 <script language="javascript" src="${path}/js/common/localedit.js"></script>
 </head>
 <body style="overflow:hidden; padding:2px;"> 
+
+
 <div class="query-panel"  >
 	<form id="queryForm" name="queryForm" action="#" style="margin:5px;">
 		<input type="hidden" id="state" name="state" value="1">
 
 		手机号码   <input type="text" id="mobile" name="mobile" />
 
-	 <input type="button" value=" 搜 索 "  onclick="query()"/>
+		<input type="button" value=" 搜 索 "  onclick="query()"/>
 	</form>
-</div>   
+</div>
+
 <div class="l-loading" style="display:block" id="pageloading"></div>  
  	<div class="l-clear"></div> 
     <div id="maingrid"></div>  
@@ -24,6 +27,7 @@
 </body>
 </html>
 <script language="javascript">
+
 
 	$(document).ready(function(){
 		query();
@@ -38,11 +42,9 @@
 			pageSize: pageSize ,     
 			columns: [  
 				{ display: 'ID'   , name: 'accountId' , width: 360 , align: 'left' ,hide : true  },
-				{ display: '部门代码'  , name: 'departmentKey', width: 100 , render: function(){
-					return "普通";
-				} },
+				{ display: '部门代码'  , name: 'departmentKey', width: 100 },
 				{  display: '部门名称'  , name: 'departmentName', width: 100 },
-				{  display: '父id'  , name: 'parentsId', width: 100 },
+				{  display: '父id'  , name: 'parentsId', width: 100 ,hide : true},
 				{ display: '操作人' , name: 'operator', width: 130 },
                 { display: '创建时间'  , name: 'createTime', width: 140 },
 				{ display: '修改时间'  , name: 'modificationTime', minWidth: 140 },
@@ -54,12 +56,12 @@
 				]
 			},
 			checkbox: true ,
-	}); 
+	});
 			  
 	
 	function query(){
-		/*QueryHtml( "/person/query" , QueryParam() );  */
-        $("#pageloading").hide();   
+		QueryHtml( '${path}'+"/pro/department/queryInfo" , QueryParam() );
+        $("#pageloading").hide();
 	}
   
 	function add(){

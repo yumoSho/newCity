@@ -9,7 +9,7 @@ import com.Newcity.libs.dmo.constant.ResultCode;
 import com.Newcity.libs.dmo.constant.TokenConstant;
 import com.Newcity.libs.dmo.vo.JsonResult;
 import com.Newcity.libs.filter.impl.WebTokenImpl;
-import com.Newcity.module.business.entity.SysUserMarket;
+import com.Newcity.module.business.entity.SysUserEntity;
 import com.Newcity.module.business.service.SysUserService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,12 +69,12 @@ public class LoginController extends BaseController {
                 return jsonResult.setup(ResultCode.INVALID_PARAM, "用户名格式有误");
             }
 
-            SysUserMarket sysUserMarket = sysUserService.login(account,password,type);
-            if(sysUserMarket == null){
+            SysUserEntity sysUserMarketEntity = sysUserService.login(account,password,type);
+            if(sysUserMarketEntity == null){
                 return jsonResult.setup(ResultCode.INVALID_PARAM, "用户名密码错误");
-            }else if(sysUserMarket.getState() == Constant.USER_FREEZE){
+            }else if(sysUserMarketEntity.getState() == Constant.USER_FREEZE){
                 return jsonResult.setup(ResultCode.INVALID_PARAM, "该用户已经冻结");
-            }else if(sysUserMarket.getState() == Constant.USER_DEPARTURE){
+            }else if(sysUserMarketEntity.getState() == Constant.USER_DEPARTURE){
                 return jsonResult.setup(ResultCode.INVALID_PARAM, "该用户已经离职");
             }
 
@@ -84,10 +84,10 @@ public class LoginController extends BaseController {
 
             }
 
-            if (sysUserMarket.getState() != null && sysUserMarket.getState() == 2) {
+            if (sysUserMarketEntity.getState() != null && sysUserMarketEntity.getState() == 2) {
                 // 离职
                 return jsonResult.setup(ResultCode.INVALID_RESULT, "该用户不存在！");
-            } else if (sysUserMarket.getState() != null && sysUserMarket.getState() == 1) {
+            } else if (sysUserMarketEntity.getState() != null && sysUserMarketEntity.getState() == 1) {
                 // 判断是否冻结
                 return jsonResult.setup(ResultCode.INVALID_RESULT, "该用户已冻结！");
             }
@@ -95,13 +95,13 @@ public class LoginController extends BaseController {
             //添加token
             Map<String, String> mapToken = new HashMap<String, String>();
             mapToken.put(TokenConstant.KEY_TOKEN_ROLE,role[0]);
-            mapToken.put(TokenConstant.KEY_TOKEN_STATE,sysUserMarket.getState().toString());
-            mapToken.put(TokenConstant.KEY_TOKEN_ACCOUNTID,sysUserMarket.getId());
+            mapToken.put(TokenConstant.KEY_TOKEN_STATE, sysUserMarketEntity.getState().toString());
+            mapToken.put(TokenConstant.KEY_TOKEN_ACCOUNTID, sysUserMarketEntity.getId());
             mapToken.put(TokenConstant.KEY_TOKEN_IP,ip);
-            mapToken.put(TokenConstant.KEY_TOKEN_ACCOUNT,sysUserMarket.getUserLoginname());
+            mapToken.put(TokenConstant.KEY_TOKEN_ACCOUNT, sysUserMarketEntity.getUserLoginname());
             mapToken.put(TokenConstant.KEY_TOKEN_TYPE,type);
             webToken.getToken(mapToken,response);
-            return jsonResult.setup(ResultCode.SUCCESS,sysUserMarket);
+            return jsonResult.setup(ResultCode.SUCCESS);
         } catch (Exception e) {
             e.printStackTrace();
             error("  " + e.toString());
